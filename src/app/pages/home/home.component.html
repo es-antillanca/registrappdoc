@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button id="popover-button">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>DuocUC Registrapp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+    <ng-template>
+      <ion-content>
+        <ion-list lines="none">
+          <ion-item [button]="true" [detail]="false">Perfil</ion-item>
+          <ion-item [button]="true" [detail]="false" (click)="logout()">Cerrar sesión</ion-item>
+
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+
+  <ng-template #loading>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #loaded>
+    <div class="m-3 p-y">
+
+      <div class="row align-items-md-stretch">
+        <div class="col-md-6 mb-2">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" class="rounded-circle" style="width:100px ;"
+              alt="...">
+
+            <h1 class="display-4 fw-normal">
+              {{userLogged.nombre}}&nbsp;{{userLogged.apellidoPat}}&nbsp;{{userLogged.apellidoMat}}</h1>
+            <p class="lead fw-normal">{{userLogged.email}}</p>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+    <div class="p-3 mb-4 bg-light rounded-3 m-3 shadow">
+      <div class="container-fluid">
+        <h1 class="display-5 fw-bold">Mis secciones</h1>
+        <p class="col-md-8 fs-4">
+          Selecciona la asignatura que te encuentres cursando para poder registrar la asistencia.
+        </p>
+        <div class="card">
+          <ion-list lines="none">
+            <ion-item button detail="true" *ngFor="let seccion of secciones" (click)="goSeccion(seccion.num)">
+              <ion-label>
+                <h3>{{seccion.nombreSec}}</h3>
+                <p>{{seccion.num}}</p>
+              </ion-label>
+            </ion-item>
+
+          </ion-list>
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
+  <p *ngIf="userLogged; then loaded else loading"></p>
+
+</ion-content>

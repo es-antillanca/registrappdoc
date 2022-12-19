@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['/home']">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button id="popover-button">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>DuocUC Registrapp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <div style="min-height: 120px;">
+          <div class="collapse collapse-horizontal" id="collapseWidthExample">
+            <div class="card card-body text-center" style="width: 550px; height: 500px;">
+              Asistencia con registro: {{fecha | date:'medium':'cl'}}
+              <qrcode [qrdata]="qrString" [width]="350" [errorCorrectionLevel]="'M'"></qrcode>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold lh-1 mb-3">{{seccion.nombreSec}} - {{activeID}}</h1>
+        <p class="lead">
+
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample"
+            aria-expanded="false" aria-controls="collapseWidthExample" (click)="generarQr()">
+            Generar asistencia <i class="bi bi-qr-code"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-3 mb-4 bg-light rounded-3 m-3 shadow">
+    <div class="container-fluid">
+      <h1 class="display-5 fw-bold">Mis alumnos</h1>
+      <div class="card">
+        <ion-list lines="none">
+          <ion-item *ngFor="let alumno of alumnosSeccion">
+            <ion-label>
+              <h3>{{alumno.nombre}}</h3>
+              <p>{{alumno.run}}-{{alumno.dv}}</p>
+            </ion-label>
+          </ion-item>
+
+        </ion-list>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

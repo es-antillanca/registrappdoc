@@ -1,0 +1,16 @@
+<ion-card>
+  <ion-card-content>
+    <ion-text class="ion-text-center">
+      <h1>Mis secciones</h1>
+      <ion-list lines="none">
+        <ion-item button detail="true" *ngFor="let seccion of secciones">
+          <ion-label>
+            <h3>{{seccion.nombreSec}}</h3>
+            <p>{{seccion.num}}</p>
+          </ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-text>
+  </ion-card-content>
+</ion-card>

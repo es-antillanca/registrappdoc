@@ -1,0 +1,25 @@
+<div style="width: 350px">
+  <ion-card style="width: 350px;height: 45vw;">
+    <ion-card-content>
+      <ion-item lines="none">
+        <ng-template #male>
+          <img src="./../../../assets/img/male-profile-icon.png" style="width: 50px; margin: 10px;" />
+
+
+        </ng-template>
+        <ng-template #female>
+
+          <img src="./../../../assets/img/female-profile-photo.png" style="width: 50px; margin: 10px;" />
+
+
+        </ng-template>
+        <p *ngIf="userLogged.genero == 'Masculino';then male else female "></p>
+        <ion-label>
+          <h3>{{userLogged.nombre}}&nbsp;{{userLogged.apellidoPat}}</h3>
+          <p>{{userLogged.email}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</div>
